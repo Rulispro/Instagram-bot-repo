@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Automation</title>
+</head>
+<body>
+    <h1>Instagram Automation</h1>
+    <div>
+        <input type="text" id="cookies" placeholder="Masukkan cookies">
+        <button onclick="login()">Login</button>
+        <select id="usernameDropdown">
+            <option value="">Pilih Username</option>
+        </select>
+    </div>
+    <h3>Autolike</h3>
+    <div>
+        <input type="number" id="totalLike" placeholder="Masukkan total like">
+        <input type="number" id="minIntervalLike" placeholder="Masukkan minimal waktu detik">
+        <input type="number" id="maxIntervalLike" placeholder="Masukkan waktu maksimal detik">
+        <button onclick="startAutolike()">Start</button>
+    </div>
+    <script>
+        function login() {
+            alert("Login berhasil!");
+        }
+        function startAutolike() {
+            alert("Autolike mulai!");
+        }
+    </script>
+</body>
+</html>
