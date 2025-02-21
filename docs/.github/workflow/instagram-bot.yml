@@ -1,17 +1,26 @@
-const puppeteer = require("puppeteer");
+name: Run Instagram Bot
 
-(async () => {
-    const browser = await puppeteer.launch({ headless: false });
-    const page = await browser.newPage();
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Jalan setiap hari jam 00:00 UTC
+  workflow_dispatch:  # Bisa dijalankan manual
 
-    // Contoh login dengan cookies
-    const cookies = [
-        { name: "sessionid", value: "MASUKKAN_COOKIE_DI_SINI", domain: ".instagram.com" }
-    ];
-    await page.setCookie(...cookies);
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
 
-    await page.goto("https://www.instagram.com");
-    console.log("Login berhasil!");
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    await browser.close();
-})();
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Instagram Bot
+        run: node instagram_bot.js
+        
