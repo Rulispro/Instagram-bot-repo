@@ -1,0 +1,17 @@
+const puppeteer = require("puppeteer");
+
+(async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+
+    // Contoh login dengan cookies
+    const cookies = [
+        { name: "sessionid", value: "MASUKKAN_COOKIE_DI_SINI", domain: ".instagram.com" }
+    ];
+    await page.setCookie(...cookies);
+
+    await page.goto("https://www.instagram.com");
+    console.log("Login berhasil!");
+
+    await browser.close();
+})();
