@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram Automation</title>
-    <script src="https://cdn.jsdelivr.net/npm/idb@6.1.4/build/iife/index-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/idb@7/build/esm/index.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Instagram Automation</h1>
-    
+
     <div>
         <input type="text" id="cookies" placeholder="Masukkan cookies">
-        <button onclick="login()">Login</button>
+        <button id="loginBtn">Login</button>
         <select id="usernameDropdown">
             <option value="">Pilih Username</option>
         </select>
@@ -19,71 +20,34 @@
 
     <h3>Autolike</h3>
     <div>
-        <input type="number" id="totalLike" placeholder="Masukkan total like">
-        <input type="number" id="minIntervalLike" placeholder="Masukkan minimal waktu detik">
-        <input type="number" id="maxIntervalLike" placeholder="Masukkan waktu maksimal detik">
-        <button onclick="startAutolike()">Start</button>
+        <input type="number" id="totalLike" placeholder="Total Like">
+        <input type="number" id="minIntervalLike" placeholder="Min Interval (detik)">
+        <input type="number" id="maxIntervalLike" placeholder="Max Interval (detik)">
+        <button id="startAutolike">Start Autolike</button>
     </div>
 
     <h3>Follow Target Username</h3>
     <div>
-        <input type="text" id="targetUsername" placeholder="Masukkan link target username akun Instagram">
+        <input type="text" id="targetUsername" placeholder="Link Target Username">
         <select id="followType">
             <option value="followers">Followers</option>
             <option value="following">Following</option>
         </select>
-        <input type="number" id="intervalFollowUsername" placeholder="Masukkan waktu detik">
-        <button onclick="startFollowTarget()">Start</button>
+        <input type="number" id="intervalFollowUsername" placeholder="Interval (detik)">
+        <button id="startFollowTarget">Start Follow</button>
     </div>
 
     <h3>Unfollow</h3>
     <div>
-        <input type="number" id="intervalUnfollow" placeholder="Masukkan waktu detik">
-        <button onclick="startUnfollow()">Start</button>
+        <input type="number" id="intervalUnfollow" placeholder="Interval (detik)">
+        <button id="startUnfollow">Start Unfollow</button>
     </div>
 
     <h3>Follow by Link Postingan</h3>
     <div>
-        <input type="text" id="postLink" placeholder="Masukkan link postingan akun">
-        <input type="number" id="intervalFollowPost" placeholder="Masukkan waktu detik">
-        <button onclick="startFollowByLink()">Start</button>
+        <input type="text" id="postLink" placeholder="Link Postingan">
+        <input type="number" id="intervalFollowPost" placeholder="Interval (detik)">
+        <button id="startFollowByLink">Start Follow Link</button>
     </div>
-
-    <script>
-        async function login() {
-            const cookies = document.getElementById('cookies').value;
-            if (!cookies) {
-                alert("Masukkan cookies terlebih dahulu");
-                return;
-            }
-            
-            // Simpan cookies ke IndexedDB
-            const db = await idb.openDB('instagramDB', 1, {
-                upgrade(db) {
-                    db.createObjectStore('cookies');
-                },
-            });
-            await db.put('cookies', cookies, 'cookies');
-
-            alert("Cookies tersimpan, akun akan login...");
-        }
-
-        function startAutolike() {
-            alert("Autolike mulai");
-        }
-
-        function startFollowTarget() {
-            alert("Auto follow target mulai");
-        }
-
-        function startUnfollow() {
-            alert("Autounfollow mulai");
-        }
-
-        function startFollowByLink() {
-            alert("Follow by link mulai");
-        }
-    </script>
 </body>
-    </html>
-    
+</html>
