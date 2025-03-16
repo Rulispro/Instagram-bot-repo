@@ -1,20 +1,27 @@
- name: Run Instagram Bot
+name: Run Instagram Bot
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Setiap jam 00:00 UTC
+    - cron: '0 0 * * *' # Setiap hari jam 00:00 UTC
   workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+
       - name: Install Dependencies
         run: npm install
-      - name: Run Instagram Tasks
+
+      - name: Run Instagram Bot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node backend/index.js
