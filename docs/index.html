@@ -23,7 +23,7 @@
         <input type="number" id="totalLike" placeholder="Total Like">
         <input type="number" id="minIntervalLike" placeholder="Min Interval (detik)">
         <input type="number" id="maxIntervalLike" placeholder="Max Interval (detik)">
-        <button id="startAutolike">Start Autolike</button>
+        <button onclick="uploadAutoLikeTask(username, max, interval, reaction)">Start Auto Like</button>
     </div>
 
     <h3>Follow Target Username</h3>
@@ -34,20 +34,20 @@
             <option value="following">Following</option>
         </select>
         <input type="number" id="intervalFollowUsername" placeholder="Interval (detik)">
-        <button id="startFollowTarget">Start Follow</button>
+        <button onclick="uploadAutoFollowTask(username, target, max, interval)">Start Auto Follow</button
     </div>
 
     <h3>Unfollow</h3>
     <div>
         <input type="number" id="intervalUnfollow" placeholder="Interval (detik)">
-        <button id="startUnfollow">Start Unfollow</button>
+        <button onclick="uploadAutoUnfollowTask(username, max, interval)">Start Unfollow</button>
     </div>
 
     <h3>Follow by Link Postingan</h3>
     <div>
         <input type="text" id="postLink" placeholder="Link Postingan">
         <input type="number" id="intervalFollowPost" placeholder="Interval (detik)">
-        <button id="startFollowByLink">Start Follow Link</button>
+        <button onclick="uploadAutoFollowFromPostTask(username, link, max, interval)">Start Follow from Post</
     </div>
 </body>
 </html>
