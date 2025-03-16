@@ -85,7 +85,7 @@ document.getElementById('startFollowByLink').onclick = async () => {
 
 // Fungsi pemicu GitHub Workflow (API repo privat/secret)
 async function triggerGitHubWorkflow(task, data) {
-    const repo = 'username/Instagram-bot'; // Ganti username dengan GitHub username kamu
+    const repo = 'Rulispro/Instagram-bot-repo '; // Ganti username dengan GitHub username kamu
     const url = `https://api.github.com/repos/${repo}/actions/workflows/${task}.yml/dispatches`;
 
     await fetch(url, {
